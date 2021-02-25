@@ -1,23 +1,12 @@
 #include <stdio.h>
 
-int a = 43;
-
-int foo(int x){
-  x = 5;
-  a = 5;
-  printf("%d %d\n",x,a);
-  return 0;
-}
+unsigned char a = 43;
 
 
 int main(void)
 {
 
-  int x = 4;
-
-  int s = foo(x);
-
-  printf("%d %d",x,a);
+  printf("%d",(int)(a<<4));
 
   return 0;
 
