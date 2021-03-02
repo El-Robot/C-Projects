@@ -1,0 +1,50 @@
+Hello CS 241 students,
+this is a test.
+Your program must pass
+this test.
+This line will end in error,[Error: XAB is not a Roman numeral]
+but this will not!
+Another error here:[Error: 300 is not a printable ASCII character]
+And another one here.[Error:Roman numeral IIX does not exist]
+This line has an error in [Error:Roman numeral IVV does not exist] the middle of it.
+If Roman numerals are written in
+lowercase, your program must
+recognize them as valid if they are correct.
+Numbers should print correctly.
+0 1 2 3 4 5 6 7 8 9
+Symbols must be printed too:
+!@#$%^&*(){}[]<>?:;
+A few more error cases:
+[Unable to read character string]
+[Error: ABCDEF is not a Roman numeral]
+These numbers are too small
+to print ASCII characters:
+[Error: 11 is not a printable ASCII character]
+[Error: 1 is not a printable ASCII character]
+[Error: 30 is not a printable ASCII character]
+[Error: 5 is not a printable ASCII character]
+[Error: 29 is not a printable ASCII character]
+[Error: 19 is not a printable ASCII character]
+These Roman numerals exist
+but are too large to print ASCII:
+[Error: 1500 is not a printable ASCII character]
+[Error: 701 is not a printable ASCII character]
+[Error: 2009 is not a printable ASCII character]
+[Error: 2018 is not a printable ASCII character]
+[Error: 3199 is not a printable ASCII character]
+And all Roman numerals
+below this line do not exist:
+[Error:Roman numeral IC does not exist]
+[Error:Roman numeral LL does not exist]
+[Error:Roman numeral LLVV does not exist]
+[Error:Roman numeral XIVI does not exist]
+[Error:Roman numeral XXVC does not exist]
+[Error:Roman numeral DD does not exist]
+[Error:Roman numeral ID does not exist]
+[Error:Roman numeral LD does not exist]
+[Error:Roman numeral XD does not exist]
+[Error:Roman numeral MCVX does not exist]
+[Error:Roman numeral VXI does not exist]
+[Error:Roman numeral MCMD does not exist]
+[Error:Roman numeral MDM does not exist]
+[Error:Roman numeral MMCMXCIXI does not exist]
