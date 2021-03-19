@@ -6,13 +6,13 @@
  *********************/
 
 #include <stdio.h>
-#include <ctype.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define NUMOFRIDERS 146
 #define MAXLENGTH 20
 
-void sort(int primary, int secondary, char unsorted[NUMOFRIDERS][6][20])
+void sortAlphabet(int attribute, char unsorted[NUMOFRIDERS][6][20])
 {
   int last = NUMOFRIDERS;
   while (last > 0)
@@ -21,7 +21,7 @@ void sort(int primary, int secondary, char unsorted[NUMOFRIDERS][6][20])
     int right = 1;
     while (right < last)
     {
-      if (strcmp(unsorted[left][primary], unsorted[right][primary]) > 0)
+      if (strcmp(unsorted[left][attribute], unsorted[right][attribute]) > 0)
       {
         int i = 0;
         for (i = 0; i < 6; i++)
@@ -38,16 +38,18 @@ void sort(int primary, int secondary, char unsorted[NUMOFRIDERS][6][20])
     }
     last--;
   }
+}
 
-  /* last = NUMOFRIDERS;
+void sortNumerical(int attribute, char unsorted[NUMOFRIDERS][6][20])
+{
+  int last = NUMOFRIDERS;
   while (last > 0)
   {
     int left = 0;
     int right = 1;
     while (right < last)
     {
-      if (strcmp(unsorted[left][primary], unsorted[right][primary]) == 0 &&
-          strcmp(unsorted[left][secondary], unsorted[right][secondary]) > 0)
+      if (atoi(unsorted[left][attribute]) > atoi(unsorted[right][attribute]))
       {
         int i = 0;
         for (i = 0; i < 6; i++)
@@ -63,8 +65,9 @@ void sort(int primary, int secondary, char unsorted[NUMOFRIDERS][6][20])
       left++;
     }
     last--;
-  } */
+  }
 }
+
 
 int main(int argc, char *argv[])
 {
@@ -104,35 +107,34 @@ int main(int argc, char *argv[])
     while (index < NUMOFRIDERS)
     {
       printf("%-20s%-20s%-20s%-20s%-20s%s\n",
-          fields[index][0],
-          fields[index][1],
-          fields[index][2],
-          fields[index][3],
-          fields[index][4],
-          fields[index][5]);
+             fields[index][0],
+             fields[index][1],
+             fields[index][2],
+             fields[index][3],
+             fields[index][4],
+             fields[index][5]);
       index += 1;
     }
   }
 
   if (strcmp(argv[1], "country") == 0)
   {
+    sortAlphabet(1, fields);
+    sortAlphabet(3, fields);
+
     index = 0;
-    printf("%-20s%-20s%-20s%-20s%-20s%-20s\n",
-           "Classification",
-           "Rider",
-           "Rider No.",
+    printf("%-20s%-20s%-20s%-20s\n",
            "Country",
-           "Team",
+           "Rider",
+           "Classification",
            "Time (hh:mm:ss)");
     while (index < NUMOFRIDERS)
     {
-      printf("%-20s%-20s%-20s%-20s%-20s%s\n",
-             fields[0][index],
-             fields[1][index],
-             fields[2][index],
-             fields[3][index],
-             fields[4][index],
-             fields[5][index]);
+      printf("%-20s%-20s%-20s%s\n",
+             fields[index][3],
+             fields[index][1],
+             fields[index][0],
+             fields[index][5]);
       index += 1;
     }
   }
@@ -140,10 +142,10 @@ int main(int argc, char *argv[])
   if (strcmp(argv[1], "team") == 0)
   {
 
-    sort(2, 4, fields);
+    sortNumerical(2, fields);
 
     index = 0;
-    printf("%-20s%-20s%-20s%s\n",
+    printf("%-20s%-20s%-20s%-20s\n",
            "Team",
            "Rider No.",
            "Rider",
@@ -154,6 +156,26 @@ int main(int argc, char *argv[])
              fields[index][4],
              fields[index][2],
              fields[index][1],
+             fields[index][5]);
+      index += 1;
+    }
+  }
+
+  if (strcmp(argv[1], "extra") == 0)
+  {
+
+    sortAlphabet(3, fields);
+
+    
+
+    index = 0;
+    printf("%-20s%-20s\n",
+           "Team",
+           "Time (hh:mm:ss)");
+    while (index < NUMOFRIDERS)
+    {
+      printf("%-20s%s\n",
+             fields[index][4],
              fields[index][5]);
       index += 1;
     }
