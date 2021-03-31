@@ -58,29 +58,5 @@ void sort(int primary, int secondary, int numberOfRiders, char unsorted[4][3][20
 int main()
 {
 
-  char things[4][3][20] = {
-      {"120", "67", "300"},
-      {"35", "Orgre", "Drawf"},
-      {"17", "Lich", "Banshee"},
-      {"1", "Bat", "Giant Spider"}};
-
-  sort(0, 1, 4, things);
-
-  printf("%-10s ", things[0][0]);
-  printf("%-10s ", things[0][1]);
-  printf("%-10s\n", things[0][2]);
-
-  printf("%-10s ", things[1][0]);
-  printf("%-10s ", things[1][1]);
-  printf("%-10s\n", things[1][2]);
-
-  printf("%-10s ", things[2][0]);
-  printf("%-10s ", things[2][1]);
-  printf("%-10s\n", things[2][2]);
-
-  printf("%-10s ", things[3][0]);
-  printf("%-10s ", things[3][1]);
-  printf("%-10s\n", things[3][2]);
-
-  return 0;
+  int *foo;
 }
