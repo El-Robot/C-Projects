@@ -145,10 +145,6 @@ int main(int argc, char *argv[])
     addNode(count, c);
   }
 
-  deleteNode(69);
-  deleteNode(70);
-  deleteNode(144);
-
   printList(argv[1]);
 
   return 0;
