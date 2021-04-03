@@ -1,62 +1,19 @@
 #include <stdio.h>
 #include <string.h>
-
-void sort(int primary, int secondary, int numberOfRiders, char unsorted[4][3][20])
-{
-  int last = numberOfRiders;
-  while (last > 0)
-  {
-    int left = 0;
-    int right = 1;
-    while (right < last)
-    {
-      if (strcmp(unsorted[left][primary], unsorted[right][primary]) > 0)
-      {
-        int i = 0;
-        for (i = 0; i < 3; i++)
-        {
-          char temp[20] = {0};
-          strcpy(temp, unsorted[left][i]);
-          strcpy(unsorted[left][i], unsorted[right][i]);
-          strcpy(unsorted[right][i], temp);
-        }
-      }
-
-      right++;
-      left++;
-    }
-    last--;
-  }
-
-  last = numberOfRiders;
-  while (last > 0)
-  {
-    int left = 0;
-    int right = 1;
-    while (right < last)
-    {
-      if (strcmp(unsorted[left][primary], unsorted[right][primary]) == 0 &&
-          strcmp(unsorted[left][secondary], unsorted[right][secondary]) > 0)
-      {
-        int i = 0;
-        for (i = 0; i < 3; i++)
-        {
-          char temp[20] = {0};
-          strcpy(temp, unsorted[left][i]);
-          strcpy(unsorted[left][i], unsorted[right][i]);
-          strcpy(unsorted[right][i], temp);
-        }
-      }
-
-      right++;
-      left++;
-    }
-    last--;
-  }
-}
+#include <stdlib.h>
 
 int main()
 {
 
   int *foo;
+  int *fug;
+
+  foo = malloc(3 * sizeof(int));
+  fug = malloc(10 * sizeof(int));
+
+  foo[10] = 10;
+  printf("%d", sizeof(malloc(10 * sizeof(int))));
+
+  free(foo);
+  return 0;
 }
