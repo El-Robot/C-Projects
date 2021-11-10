@@ -128,6 +128,14 @@ void replaceNode(char oldAcid, char newAcid, int index)
 
 int main(int argc, char *argv[])
 {
+
+  int numOfDeletes = 0;
+  int numOfReplaces = 0;
+  int i = 0;
+
+  int *delArgs = (int *)calloc(0, sizeof(int));
+  char **repArgs = (char *)calloc(0, sizeof(char *));
+
   int count = 1;
   char c = getchar();
   head = (Node *)malloc(sizeof(Node));
@@ -145,7 +153,110 @@ int main(int argc, char *argv[])
     addNode(count, c);
   }
 
+  head = (Node *)malloc(sizeof(Node));
+  tail = head;
+  head = addNode(1, c);
+
+  while (numOfDeletes + numOfReplaces < 2)
+  {
+    int tempInt = 0;
+    char *tempStr;
+
+    if (sscanf(argv[numOfDeletes + numOfReplaces + 2], "d%d", &tempInt) > 0)
+    {
+      numOfDeletes++;
+      delArgs = realloc(delArgs, numOfDeletes * sizeof(int));
+      delArgs[numOfDeletes] = tempInt;
+    }
+
+    if (sscanf(argv[numOfDeletes + numOfReplaces + 2],
+               "%s", tempStr) > 0)
+    {
+      numOfReplaces++;
+      repArgs = (int **)realloc(repArgs, numOfReplaces * sizeof(int[3]));
+      repArgs[numOfReplaces] = tempStr;
+    }
+  }
+
+  for (i = 0; i < numOfDeletes; i++)
+  {
+    deleteNode(delArgs[i]);
+  }
+
+  for (i = 0; i < numOfReplaces; i++)
+  {
+    replaceNode(repArgs[i][0], repArgs[i][2], repArgs[i][1]);
+  }
+
   printList(argv[1]);
 
   return 0;
 }
+
+/*
+{
+
+  int numOfDeletes = 0;
+  int numOfReplaces = 0;
+  int i = 0;
+
+  int *delArgs = (int *)calloc(0, sizeof(int));
+  char **repArgs = (char *)calloc(0, sizeof(char *));
+
+  int count = 1;
+  char c = getchar();
+  head = (Node *)malloc(sizeof(Node));
+  tail = head;
+  head = addNode(1, c);
+
+  while (c != EOF)
+  {
+    c = getchar();
+    if (c == '\n')
+    {
+      continue;
+    }
+    count++;
+    addNode(count, c);
+  }
+
+  head = (Node *)malloc(sizeof(Node));
+  tail = head;
+  head = addNode(1, c);
+
+  while (numOfDeletes + numOfReplaces < 2)
+  {
+    int tempInt = 0;
+    char *tempStr;
+
+    if (sscanf(argv[numOfDeletes + numOfReplaces + 2], "d%d", &tempInt) > 0)
+    {
+      numOfDeletes++;
+      delArgs = realloc(delArgs, numOfDeletes * sizeof(int));
+      delArgs[numOfDeletes] = tempInt;
+    }
+
+    if (sscanf(argv[numOfDeletes + numOfReplaces + 2],
+               "%s", tempStr) > 0)
+    {
+      numOfReplaces++;
+      repArgs = (int **)realloc(repArgs, numOfReplaces * sizeof(int[3]));
+      repArgs[numOfReplaces] = tempStr;
+    }
+  }
+
+  for (i = 0; i < numOfDeletes; i++)
+  {
+    deleteNode(delArgs[i]);
+  }
+
+  for (i = 0; i < numOfReplaces; i++)
+  {
+    replaceNode(repArgs[i][0], repArgs[i][2], repArgs[i][1]);
+  }
+
+  printList(argv[1]);
+
+  return 0;
+}
+*/
